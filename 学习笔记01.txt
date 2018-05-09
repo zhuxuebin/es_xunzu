@@ -4,6 +4,8 @@ JPAConfig
 terminal中直接执行：mvn spring-boot:run
 在Application中直接加一个url映射看进程启动是否正常启动
 
+spring boot还是用老版本的：1.5.7.release，用2.0.x的会报错
+
 3-3
 JUnit
 H2内存数据库
