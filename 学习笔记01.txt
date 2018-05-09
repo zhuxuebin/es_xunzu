@@ -19,4 +19,36 @@ WebMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware
 生成模板资源解析器
 Thymeleaf标准官方解释器
 
-4-1
+在application.xml和application-dev.xml文件中设置thymeleaf相关的配置项
+
+mvn clean package spring-boot:run -Dmaven.test.skip=true
+
+spring-boot-devtools热加载设置--引入maven依赖、settings中设置，pom.xml文件中设置shift+alt+ctrl+/===registry勾选掉compile
+之后重启idea
+
+然后新建一个index.html并编写HomeController测试下
+
+
+4-x api结构设计
+ApiResponse
+
+4-4 异常拦截器
+AppErrorController继承ErrorController
+web异常和其他异常拦截
+
+4-5 功能性页面开发 400/500/logout
+spring.devtools.restart.exclude=templates/**,static/** ===设置静态资源的修改不需要热加载
+
+5-1 业务与功能分析
+H-ui.admin v3.1
+AdminController
+
+登录功能实现
+在WebMvcxxx支持security方言
+WebSecurityConfig--权限控制配置类
+AuthProviders
+
+5-2
+
+5-3 20180509 24:00:00
+ 
