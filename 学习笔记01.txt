@@ -1,0 +1,20 @@
+3-2
+SpringBoot+JPA+Hibernate
+JPAConfig
+terminal中直接执行：mvn spring-boot:run
+在Application中直接加一个url映射看进程启动是否正常启动
+
+3-3
+JUnit
+H2内存数据库
+1.通过在application-test.xml中配置即可，将原来mysql的配置替换成H2的配置
+2.并在测试类通过@ActiveProfiles("test")让类去加载application-test.xml配置文件
+3.在配置文件中指定数据库schema和data sql文件
+
+3-4
+前端集成
+WebMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware
+生成模板资源解析器
+Thymeleaf标准官方解释器
+
+4-1
