@@ -1,7 +1,10 @@
 package com.zxb.xunzu.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by xuery on 2018/5/9.
@@ -35,6 +38,17 @@ public class User {
     private Date lastUpdateTime;
 
     private String avatar;
+
+    @Transient
+    private List<GrantedAuthority> authorityList; //当前用户所拥有的权限列表
+
+    public List<? extends GrantedAuthority> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<GrantedAuthority> authorityList) {
+        this.authorityList = authorityList;
+    }
 
     public Long getId() {
         return id;

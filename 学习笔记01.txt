@@ -21,7 +21,7 @@ Thymeleaf标准官方解释器
 
 在application.xml和application-dev.xml文件中设置thymeleaf相关的配置项
 
-mvn clean package spring-boot:run -Dmaven.test.skip=true
+mvn clean package spring-boot:run -Dmaven.test.skip=true (Command Line中需要去除mvn)
 
 spring-boot-devtools热加载设置--引入maven依赖、settings中设置，pom.xml文件中设置shift+alt+ctrl+/===registry勾选掉compile
 之后重启idea

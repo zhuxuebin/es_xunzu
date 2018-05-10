@@ -12,9 +12,4 @@ public class EsXunzuProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EsXunzuProjectApplication.class, args);
 	}
-
-	@GetMapping
-	public String testHello(){
-		return "hello, xuery";
-	}
 }

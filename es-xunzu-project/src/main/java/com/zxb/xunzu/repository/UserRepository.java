@@ -13,4 +13,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     //函数名应该是约定好的
     User findByName(String userName);
 
+    User findUserByPhoneNumber(String telephone);
 }
