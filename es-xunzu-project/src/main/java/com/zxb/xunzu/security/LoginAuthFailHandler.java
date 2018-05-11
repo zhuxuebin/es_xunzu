@@ -10,5 +10,9 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 public class LoginAuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
     private final LoginUrlEntryPoint urlEntryPoint;
 
+    public LoginAuthFailHandler(LoginUrlEntryPoint urlEntryPoint){
+        this.urlEntryPoint = urlEntryPoint;
+    }
 
+    //todo
 }

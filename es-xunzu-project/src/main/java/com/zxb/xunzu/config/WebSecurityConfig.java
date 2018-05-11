@@ -3,8 +3,11 @@ package com.zxb.xunzu.config;
 import com.zxb.xunzu.security.AuthFilter;
 import com.zxb.xunzu.security.AuthProvider;
 import com.zxb.xunzu.security.LoginAuthFailHandler;
+import com.zxb.xunzu.security.LoginUrlEntryPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -42,8 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint()
+                .authenticationEntryPoint(urlEntryPoint())
                 .accessDeniedPage("/403");
+    }
+
+    /**
+     * 自定义认证策略
+     * @return
+     */
+    @Autowired
+    public void configGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.authenticationProvider(authProvider()).eraseCredentials(true);
     }
 
     @Bean
@@ -63,8 +75,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public LoginUrlEntryPoint urlEntryPoint() {
+        return new LoginUrlEntryPoint("/user/login");
+    }
+
+    @Bean
     public LoginAuthFailHandler authFailHandler() {
-        return new LoginAuthFailHandler();//todo xuery
+        return new LoginAuthFailHandler(urlEntryPoint());
     }
 
     @Bean
