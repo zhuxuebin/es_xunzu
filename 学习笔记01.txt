@@ -51,4 +51,17 @@ AuthProviders
 5-2
 
 5-3 20180509 24:00:00
+AuthProvider 自定义登录
+UrlEntryPoint url登录拦截映射器
+Fail***Handler 登录失败后跳转到指定页面
+
+6-2 基于七牛云的图片-对象存储
+引入maven依赖，阅读相关的操作手册
+/admin/upload/photo
+WebFileUploadConfig
+属性配置 #multipart config
+
+6-4 20180521
+
+
 
