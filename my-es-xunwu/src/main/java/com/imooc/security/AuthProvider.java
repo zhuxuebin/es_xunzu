@@ -21,8 +21,8 @@ public class AuthProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getName(); //输入用户名
-        String inputPassword = (String) authentication.getCredentials(); //输入密码
+        String username = authentication.getName(); //输入的用户名
+        String inputPassword = (String) authentication.getCredentials(); //输入的密码
 
         User user = new User();
         user.setPassword("");
@@ -35,7 +35,7 @@ public class AuthProvider implements AuthenticationProvider {
             //验证通过,则返回user信息和user拥有的权限列表
             return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorityList());
         }
-        throw new BadCredentialsException("authError");
+        throw new BadCredentialsException("authError"); //跳转到LoginAuthFailHandler
     }
 
     @Override

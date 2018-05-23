@@ -5,8 +5,11 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +18,10 @@ import java.util.Map;
  * Created by xuery on 2018/5/10.
  */
 public class LoginUrlEntryPoint extends LoginUrlAuthenticationEntryPoint {
+
+    private static final String API_PREFIX = "/api";
+    private static final String API_CODE_403 = "{\"CODE\":403}";
+    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 
     private PathMatcher pathMatcher = new AntPathMatcher();
 
@@ -31,15 +38,49 @@ public class LoginUrlEntryPoint extends LoginUrlAuthenticationEntryPoint {
         authEntryPointMap.put("/admin/**", "/admin/login");
     }
 
+    /**
+     * 根据请求跳转到制定页面，父类默认使用loginFormUrl
+     * 拦截请求并映射到相应的登录页面
+     *
+     * @param request
+     * @param response
+     * @param exception
+     * @return
+     */
     @Override
     protected String determineUrlToUseForThisRequest(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) {
         String uri = request.getRequestURI().replace(request.getContextPath(), "");
 
         for (Map.Entry<String, String> authEntry : this.authEntryPointMap.entrySet()) {
-            if(this.pathMatcher.match(authEntry.getKey(), uri)){
-
+            if (this.pathMatcher.match(authEntry.getKey(), uri)) {
+                return authEntry.getValue();
             }
         }
-        return super.determineUrlToUseForThisRequest(request, response, exception);
+        return super.determineUrlToUseForThisRequest(request, response, exception);//跳转到loginFormUrl==/user/login
+    }
+
+
+    /**
+     * 如果是api接口，返回json数据 否则按照一般流程处理
+     * 403 禁止访问
+     * @param request
+     * @param response
+     * @param authException
+     * @throws IOException
+     * @throws ServletException
+     */
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        String uri = request.getRequestURI();
+        if (uri.startsWith(API_PREFIX)) {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setContentType(CONTENT_TYPE);
+
+            PrintWriter pw = response.getWriter();
+            pw.write(API_CODE_403);
+            pw.close();
+        } else {
+            super.commence(request, response, authException);
+        }
     }
 }

@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin()
-                .loginProcessingUrl("/login") //配置角色登录处理入口
+                .loginProcessingUrl("/login") //配置角色登录处理入口 登录url:localhost:8080/login，然后就会去做登录验证
                 .failureHandler(authFailHandler())
                 .and()
                 .logout()
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(urlEntryPoint())
+                .authenticationEntryPoint(urlEntryPoint()) //如果找不到合适的controller映射地址,则会去urlEntryPoint根据映射规则映射
                 .accessDeniedPage("/403");
 
             httpSecurity.csrf().disable();
