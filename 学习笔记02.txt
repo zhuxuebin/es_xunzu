@@ -1,0 +1,18 @@
+7-1 功能与分析设计 HouseController
+RentSearch
+rent/house
+采用session做城市缓存，一般可能用redis会多一点
+
+RentValueBlock
+
+7-2,3 默认排序实现
+HouseServiceImpl--query
+
+7-4 其他维度的排序实现
+HouseSort
+
+7-5 房源信息详情页
+rent/house/show/{id}
+
+################正题开始###################
+

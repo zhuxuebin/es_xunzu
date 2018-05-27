@@ -80,6 +80,42 @@ HouseTagRepository
 admin/add/house
 LoginUserUtil
 
+6-8 房源新增3
+
+6-9 房源浏览功能实现
+RedisSessionConfig--防止每次应用重启用户名密码过期，通过redis缓存http Session
+
+admin/houses
+ApiDataTableResponse
+DatatableSearch
+先前端分页，但是当数据量很大的时候还是要后台来做分页
+
+6-10 房源浏览功能2：分页与排序
+interface HouseRepository extends PagingAndSortingRepository
+
+6-11 房源浏览功能3：多维度排序
+interface HouseRepository extends PagingAndSortingRepository
+,JpaSpecificationExecutor
+
+6-12 编辑功能实现
+admin/house/edit get 跳转到编辑页面
+admin/house/edit post 保存编辑结果接口
+update函数要加事务
+
+6-13 编辑实现功能2
+完善
+比如updateCover、removeCover更新封面等等
+
+6-14 审核功能实现
+更新房源状态：updateStatus
+admin/house/operate/{id}/{operation}
+
+
+
+
+
+
+
 
 
 
