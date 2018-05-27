@@ -47,6 +47,28 @@ ip:9200/_analyze?analyzer=standard&pretty=true&text=瓦力最帅
 
 8-13 search as you type
 HouseController-rent/house/autocomplete
+HouseSuggest
+house_index_with_ik_mapping
+house_index_with_suggest
+AnalyzeRequestBuilder
+
+样例中只是把房源信息作了下search as you type,实际搜索中可能不止房源，可能还有车子啊，可以自己拓展下
+
+8-14 小区房源统计功能-聚合
+SearchServiceImpl--agg聚合操作aggregateDistrictHouse
+
+8-15 搜索引擎优化
+/xunwu/house?_search?explain=true
+说白了就是自定义搜索计划，比如权重boost等等
+must should 
+
+
+
+
+
+
+
+
 
 
 
