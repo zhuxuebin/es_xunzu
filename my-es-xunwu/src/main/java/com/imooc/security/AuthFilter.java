@@ -33,7 +33,7 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
         String name = obtainUsername(request);
         if (name != "") {
             request.setAttribute("username", name);
-            return super.attemptAuthentication(request, response);
+            return super.attemptAuthentication(request, response); //跳转到AuthProvider
         }
 
         //可能是通过手机号注册登录的
