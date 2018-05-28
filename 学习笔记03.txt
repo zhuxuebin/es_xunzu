@@ -6,6 +6,9 @@
 地图事件绑定数据源
 地图展示房源数据麻点图
 
-lbsyun.baidu.com -- api开发地图
+lbsyun.baidu.com -- api开发地图，javascript API
 
 9-2 20180527
+百度地图两个key
+rent/house/map
+
