@@ -33,6 +33,21 @@ map.reSize
 
 SearchService--mapQuery(mapSearch)
 
+'dragend'
+
+9-8 基于百度LBS的云麻点
+libscloud-api
+AddressService--lbsUpload/removeLbs
+
+
+9-9 云麻点2
+Http请求
+点击创建数据或者删除房源数据，可以通过虎鲸数据平台查看数据
+
+9-10 云麻点3
+customLayer
+主要是看下api文档
+
 
 
 
