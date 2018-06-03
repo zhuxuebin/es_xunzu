@@ -1,4 +1,4 @@
-###基于百度地图的找房功能
+﻿###基于百度地图的找房功能
 9-1 业务与功能分析
 构建房源地图坐标
 聚合地图范围内房源
@@ -9,6 +9,31 @@
 lbsyun.baidu.com -- api开发地图，javascript API
 
 9-2 20180527
-百度地图两个key
+百度地图两个key，在rent-map script里面配置
 rent/house/map
+templateResolver.setCacheXxx
+aggregateDistrictHouse
+
+rent-map.js
+
+9-4 地图鼠标事件应用
+textLabel.addEventListener-mouseover/mouseout
+
+9-5 基于地址获取经纬度的开发实现
+addressService--getBaiduMapLocation
+
+9-6 基于es的地图查询功能
+MapSearch
+rent/house/map/houses
+HouseService--mapQuery
+
+9-7 基于ES的视野数据源绑定
+map.addEventListener
+map.reSize
+
+SearchService--mapQuery(mapSearch)
+
+
+
+
 
